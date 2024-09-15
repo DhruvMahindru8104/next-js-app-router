@@ -1,0 +1,17 @@
+1- usePathname() function ek react function hai jo client side pe chlta hai means ki aapko iska use krne k liye component ko client component bnana hoga then aap iska use kr skte 
+2- iska main kaam hai url ko print krwana
+
+-jb aap www.domainname.com page pe hoge to 
+pathname = usePathname()
+clg(pathname) # it will print / 
+
+
+-jb aap www.domainname.com/dashboard page pe hoge to 
+pathname = usePathname()
+clg(pathname) # it will print /dashboard 
+
+
+-jb aap www.domainname.com/dashboard/invoices page pe hoge to 
+pathname = usePathname()
+clg(pathname) # it will print /dashboard/invoices  
+

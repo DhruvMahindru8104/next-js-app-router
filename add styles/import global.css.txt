@@ -1,0 +1,18 @@
+1- dekho global.css hai use import krwao '@/app/layout.tsx' mein . dekho aap global.css k liye ek alg styles name ka folder bna skte ho . @/app/styles/global.css
+
+
+'@/app/layout.tsx' mein yeh code daalna 
+
+import '@/app/ui/global.css'; // hmari global.css ka use ab hr page kr skta 
+ 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}

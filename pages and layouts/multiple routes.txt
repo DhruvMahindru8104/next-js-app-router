@@ -1,0 +1,24 @@
+-Dekho isko krne k liye two rules apply kro 
+rule no.1- app folder k andr layout.js nhi hogi (means koi bhi root layout nhi hogi)
+rule no.2- app k andr jitne bhi leaf segment honge unka ek group route bnana (means hr ek leaf segment ka ek parent hoga jo ki () mein hoga Example (dashboard layout))
+
+app/ 
+  ├── (rootlayout)/               # Folder for Root Layout Group (root segment) 
+  │   ├── layout.jsx              # Root layout for only index page 
+  │   └── pages.tsx               # index page
+  ├── (dashboard layout)/         # Folder for Dashboard Layout Group (leaf segment ka parent)
+  │   ├── layout.js               # Layout for all dashboard/* routes 
+  │   └── dashboard/              # Dashboard Route Group (leaf segment)
+  │       ├── invoices/           # Folder for Invoices Page
+  │       │   └── page.js         # Invoices Page Component
+  │       └── customers/          # Folder for Customers Page
+  │           └── page.js         # Customers Page Component
+  └── (login layout)/             # Folder for Login Layout Group
+      ├── layout.js               # Layout for login/* routes
+      └── login/                  # Login Route Group
+          └── page.js             # Login Page Component
+
+
+ab dekho app k andr ko layout.js nhi hai . hum chahte hai hr ek leaf segment ka alg layout ho isliye humne leaf segment ka use kiya . 
+
+-remember layout.js ko html k andr likhna hai ok.

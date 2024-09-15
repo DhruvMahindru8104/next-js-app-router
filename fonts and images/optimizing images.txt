@@ -1,0 +1,24 @@
+in 4 benefits ki vajh se hum next js image component ka use krte 
+
+optimize ka meaning hota hai image ko compress krna it means bdi size ki photo ko device k hisab se chota krna 
+
+### 1. **Automatic Optimization:**
+- **Kya Hai:** Next.js automatically images ko resize aur optimize karta hai taaki woh faster load ho.
+- **Example:** Agar aapke paas ek bada photo hai(5 mb ka ), to Next.js usko mobile ke liye chhota(200 kb) aur desktop ke liye bada resize karega(1mb). Aur agar browser support karta hai, to woh image ko efficient format (like WebP) mein bhi convert kar sakta hai.
+
+### 2. **On-Demand Optimization:**
+- **Kya Hai:** Images tabhi optimize hoti hain jab user unhe dekhne ki request karta hai, na ki site build karte waqt.
+- **Example:** Agar aapke paas 100 images hain lekin user sirf 3 images dekh raha hai, to Next.js sirf un 3 images ko hi optimize karega aur load karega. Isse aapka site build time fast hota hai aur unnecessary data load nahi hoti.
+
+### 3. **Lazy Loading:**
+- **Kya Hai:** Images tab load hoti hain jab user unhe dekhne ke liye scroll karta hai, isse initial page load fast hoti hai.
+- **Example:** Agar aapki page par bohot saari images hain, to Next.js pehle sirf wahi images load karega jo screen par hain. Jaise hi user scroll karega, baaki images load hoti hain.
+
+### 4. **No Layout Shifts:**
+- **Kya Hai:** Images aise render hoti hain jo page ke layout ko stable rakhti hain jab images load hoti hain.
+- **Example:** Jab page load ho raha hota hai aur images load ho rahi hoti hain, to page ka layout change nahi hota. Isse user experience smooth rehta hai aur page ka design stable rehta hai.
+
+Is tarah se, Next.js images ko handle karne ke liye kaafi smart features provide karta hai jo aapki website ko fast aur efficient banate hain.
+
+
+- shadcn mein ek aspect ratio name ka component aata hai . uska use krke images ko responsive bnao .

@@ -1,0 +1,5 @@
+1- dekho css modules ek css file hoti hai jise aap apne components mein use kr skte ho . 
+
+example aapne about name ka page bnaya to aapko about name k folder k andr ek about.css ka folder bnana padna 
+and then aapko us about.css ko about/page.tsx mein import krna 
+now you can use it . 

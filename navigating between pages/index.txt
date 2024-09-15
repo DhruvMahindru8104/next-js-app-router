@@ -1,0 +1,3 @@
+1-Link component(we already know it , humne isko apni github repo mein bhi likha hai vha pr jake dekh lo )
+2- usePathname()
+3- using clsx library ( yeh library css ko condition k base pe chlati hai )(if pathname==a only then css run)

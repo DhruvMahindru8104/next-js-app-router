@@ -1,0 +1,3 @@
+dekho jb aap next js install kroge to already tailwind css download hoke aayegi aapke package.json mein . but by chance nhi hui install to documentation dekhlo tailwind css ki kaise download kre . 
+
+global.css mein tailwind ko add krlo and then global.css ko app/layout.tsx mein daal do .

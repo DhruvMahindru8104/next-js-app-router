@@ -1,0 +1,61 @@
+index-
+1-what is streaming
+2-where to use streaming csr,static rendering or dynamic rendering 
+3-why always wrap a dynamic rendered component inside <Suspense> to achieve csr user experience but making the page using dynamic rendering.
+
+what is streaming-
+Streaming in Next.js ka matlab hai ki jab tum data ko server se client tak bhejte ho, toh poori page ko ek saath load karne ke bajaye, tum usse chhote chhote parts ya "chunks" mein bhej sakte ho. Jaise hi koi part ready hota hai, vo turant client ko dikhne lagta hai, bina iske ki poora data load hone ka wait kare.
+
+### Iska fayda kya hai?
+Jab tum streaming ka use karte ho, toh slow data requests (jaise APIs jo zyada time leti hain) tumhare poore page ko block nahi karte. Tumhare page ke jo parts jaldi ready ho jate hain, vo turant dikhai dene lagte hain, aur user ko turant kuch dekhne aur interact karne ka mauka milta hai. Isse **better user experience** hota hai, kyunki user ko poora data load hone ka wait nahi karna padta.
+
+### Ek Example:
+Maan lo tum ek product listing page bana rahe ho. Tum pehle products ki images ko load kar sakte ho, jo user ko jaldi dikh jayengi, aur tab tak baaki details (jaise price ya reviews) background mein load hoti rahengi. Isse user ko ek smooth aur fast experience milta hai.
+
+Matlab, **poori page ko ek saath wait karne se better hai ki jo cheezein jaldi ready ho rahi hain, unhe pehle dikhaya jaye**, aur baaki parts badh me stream hote rahe.
+
+///////////////////////////////////////////
+streaming kha pr use hoti ssr , csr ya staticsite generation-
+**Streaming** ka use **dynamic rendering** mein hota hai, specifically **server-side rendering (SSR)** ke sath. Jab tum server-side pe dynamically content generate karte ho, tab streaming help karti hai parts of the page ko turant dikhane mein, bina poora data load hone ka wait kiye.
+
+### Static Rendering:
+- **Static Rendering** mein page pehle se hi static HTML ke form mein build ke time par generate ho jata hai, aur jab user request karta hai, toh same pre-built HTML serve kiya jata hai.
+- Ismein **streaming ka koi role nahi hota**, kyunki static page poora ek saath ready hota hai, aur usse chunks mein nahi bhejna padta.
+
+### Client-side Rendering (CSR):
+- **Client-side Rendering** mein poora data client pe fetch hota hai aur JavaScript se DOM ko modify karta hai.
+- Ismein bhi **streaming ka use nahi hota**, kyunki page ka initial HTML server se nahi aata, sab kuch client-side pe hota hai.
+
+### Dynamic Rendering (Server-side Rendering - SSR):
+- **Streaming ka actual use SSR mein hota hai**. Jab server pe page render ho raha hota hai, tab tum response ko chhote chhote parts mein stream kar sakte ho. Taki, user ko ek fully-rendered page ke liye wait na karna pade, aur page ke kuch parts jaldi render ho ke dikhne lagen.
+
+### Conclusion:
+Streaming **dynamic rendering (SSR)** ka hissa hai, jisme tum data ko **progressively** bhejte ho, aur poori page load hone ka wait nahi karte.
+
+//////////////////////////////////////////////////////////////////////////////////////
+- why always wrap a server component in <suspense>-
+.........................................
+-app/component/hello (this component uses dynamic rendering kyuki ismein server side code hai )
+
+-app/dashboard/page ( ab yeh page hai jismein humne hello ko import kiya ab yeh page bhi server side rendering ka hi use krega)
+import Hello
+  return (
+    <>
+    <h1 className='text-4xl text-center'> This is Dashboard Customer page and using server side rendering </h1>
+
+    <Suspense fallback={<DashboardSkeleton/>}>
+<Hello/> # page mein hello component ka use hua to ab yeh page bhi server side render page bn gya .
+
+    </Suspense>
+    </>
+  )
+
+- ab dekho page k andr hello component aa gya jo ki serverside code contain krta iska mtlb jo already code hoga page.tsx k andr ab vo bhi server se built kr ke aayega . but problem is ki isse user experience khrab hoga 
+
+so thats why we use streaming 
+- first jo bhi page ka static content hoga vo aayega . like html of page ya static rendering wale component 
+- fir jo component dynamic rendering ka code contain krta hai use hum <Suspense><asyncComponentWhichContainDynamicRendering/></Suspense> k andr wrap kr denge 
+
+- result- yeh fir pura client side rendering ki trh user experience dega pr fayda yeh hai ki yeh direct server se fetch hoke aayega naki browser useeffect ki madad se fetch krega .
+
+.........................................................

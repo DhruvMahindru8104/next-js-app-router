@@ -1,0 +1,8 @@
+Root Layout:(in simple agr aap chahte ho ki aapki app k andr hr page pr ek layout show ho then use this )
+Global elements jaise header, footer, aur common styling ke liye use karo jo har page pe dikhna chahiye.
+
+
+Multiple Layouts: (agr aap chahte hr ek leaf segment ki alg layout ho then use this)
+Different sections jaise dashboard, profile, ya login ke liye alag layouts banane ke liye use karo, jahan har section ki apni specific design aur elements hote hain.
+In short, root layout har page pe same elements rakhta hai, aur multiple layouts alag-alag sections ke liye different designs handle karte hain.
+

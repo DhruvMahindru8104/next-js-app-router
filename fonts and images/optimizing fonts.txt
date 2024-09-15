@@ -1,0 +1,89 @@
+"theory"
+
+isko seekhne k liye sbse pehle hume smjhna hoga cumulative layout shift kya hota 
+Cumulative Layout Shift (CLS) Explained in Simple Terms:
+Jab user aapki website ko kholta hai, pehle browser ko HTML aur CSS files milti hain, lekin custom fonts, jaise Roboto ya Open Sans, thoda time lete hain load hone mein.
+
+Pehle kya hota hai?
+
+Jab tak custom font (jaise Roboto) load nahi hota, browser ek basic system font (jaise Arial) ka use karta hai taaki text dikh sake.
+Bad mein kya hota hai?
+
+Jab custom font download ho jata hai, browser automatically Arial ko Roboto se replace kar deta hai. Problem yeh hoti hai ki dono fonts ka size aur spacing alag hota hai, isliye text ka size change hota hai aur web page ka layout shift kar jata hai.
+Yeh shift kaise hota hai?
+
+Pehle user ko Arial font mein text dikhta hai, jo thoda chhota ho sakta hai. Fir jab Roboto font load hota hai, text thoda bada ho jata hai ya spacing change hoti hai, jis se nearby elements (jaise images, buttons) shift ho jate hain.
+Yeh Layout Shift se Problem kya hoti hai?
+
+Yeh unexpected shifting ek bura user experience create karta hai, aur user ko dikkat hoti hai text padhne ya website interact karne mein.
+
+
+
+
+
+now ab is Problem ko solve krne k liye 
+
+Next.js Font Optimization kaise kaam karta hai:
+Automatic Font Optimization:
+
+Jab aap next/font module use karte ho, Next.js aapki required font files ko build time(npm run build) pe download kar leta hai.
+Ye font files aapke website ke static assets (jaise images, CSS, etc.) ke sath host ho jati hain, isliye jab user aapki website visit karta hai, to fonts ko load karne ke liye koi external request nahi bhejni padti (jaise Google Fonts se).
+No Additional Network Requests:
+
+Kyunki fonts pehle se hi website ke sath host hote hain, isliye page load hote waqt koi extra network request nahi hoti. Isse loading time kam hota hai aur performance improve hoti hai.
+Layout Shifts Reduce hote hain:
+
+Build time pe font files preloaded hoti hain, isliye Cumulative Layout Shift (CLS) kam ho jata hai. Jab page render hota hai, to custom fonts already available hote hain.
+Iska matlab browser ko pehle ek fallback font aur baad mein custom font mein switch karne ki zarurat nahi padti, jo layout changes ko rokta hai.
+
+
+                                    'practical'
+step 1-> aapko sbse pehle app folder k andr khi pe bhi fonts.txt name ki file bnani hai . aap isko kisi folder k andr bhi save kr skte like app/ui/fonts.txt ( humne file ko ui folder k andr bnaya)
+and uske andr yeh likhn aap
+
+import { Inter } from 'next/font/google'; # ismein humne font ko next/font se import kiya 
+ 
+export const inter = Inter({ subsets: ['latin'] }); # ab hum is font ko export kr rhe taki hum iska use layout.tsx mein kr paye 
+
+step 2-> ab app/layout.tsx mein jao vha pe jake yeh likho 
+import '@/app/ui/global.css';
+import { inter } from '@/app/ui/fonts';  # humne fonts ko app/layout mein import krwaya . ( app mein krwaya means sare components (jo app folder mein honge) ab isi ka use krenge )
+ 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className={`${inter.className} antialiased`}>{children}</body> # yeh jo antialiased class hai yeh tailwind ki class hai jo kaafi smooth bnata hai font ko
+    </html>
+  );
+}
+
+
+"fonts.tsx mein aap multiple fonts bhi bnakr export kr skte "
+
+@/app/ui/fonts.tsx
+import { Inter,Lusitana,Mingzat } from 'next/font/google';
+ 
+export const inter = Inter({ subsets: ['latin'] });
+export const Lus = Lusitana({ weight:['400','700'] ,subsets: ['latin'] });
+export const ming = Mingzat({subsets: ['latin'],weight:'400' });
+
+
+
+ab in fonts ko khi pe bhi aap aaram se use kr skte 
+
+-app/page.tsx mein humne  yeh teeno fonts import kr liye
+import { inter,lus,ming } from '@/app/ui/fonts'
+  <p
+      className={`${Lus.className} text-xl text-gray-800 md:text-3xl md:leading-normal`}
+    > is paragraph ko Lus font de diya
+  <p
+      className={`${inter.className} text-xl text-gray-800 md:text-3xl md:leading-normal`}
+    > is paragraph ko inter font de diya
+  <p 
+      className={`${ming.className} text-xl text-gray-800 md:text-3xl md:leading-normal`}
+    > is paragraph ko ming font de diya
+

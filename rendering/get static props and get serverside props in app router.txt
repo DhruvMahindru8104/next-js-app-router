@@ -1,0 +1,46 @@
+- next js mein two types ki rendering hoti 
+   - static rendering(getstaticprops wali rendering)
+   - Dynamic rendering(getserversideprops wali rendering)
+
+- jo client side rendering hoti hai vo bhi ek type ki static rendering hoti kyuki ismein html to generate ho jati hai but data fetch krne ki request baad mein jati jb component ki html user ko show ho jaye .
+
+-Dekho Hume next js ko btane ki jurat nhi ki component staticsite rendering ka use krega ya serverside rendering ka.
+
+-Next js, component  k andr functions k Hisab se dekhega ki component  ko serverside rendering krwana ya static rendering krwana.
+
+-Example agr aap fetch function mein cache: 'force-cache'  ka use kr rhe ho to vo component  apne aap static site rendering  use krega . 
+Agr aap component  mein usecookie jaisa function use kroge jo server side hai to aapka component  serverside rendering  ka use krega.
+
+- ismein aapko decide nhi krna hota  ki kis component k andr server side props ka use krna and kiske andr static props ka use krna next js apne aap dekhega ki component ko kya banana hai server side ya static side .
+
+- npm run build k time pe pta lg jayega konsa component static hai ya konsa component server side hai 
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    348 B           104 kB
+├ ○ /_not-found                          895 B          90.6 kB
+├ ƒ /api/user                            0 B                0 B
+├ ○ /dashboard                           174 B            95 kB
+├ ƒ /dashboard/customers                 174 B            95 kB
+├ ○ /dashboard/invoices                  925 B          95.7 kB
+├ ○ /login                               304 B          98.8 kB
+└ ƒ /seed                                0 B                0 B
++ First Load JS shared by all            89.7 kB
+  ├ chunks/129-a588829a2c5c70a2.js       36.1 kB
+  ├ chunks/dc7297ce-e19378263d220baa.js  51.7 kB
+  └ other shared chunks (total)          1.92 kB
+
+
+○  (Static)   prerendered as static content (static rendering)
+ƒ  (Dynamic)  server-rendered on demand(server side rendering)
+
+-dekho humne dashboard/customer k fetch function mein
+ const response = await fetch('https://fakestoreapi.com/products', {
+      cache: 'no-store', // Ensures data is fetched at build time
+    }); # yeh ek server side code hai . 
+    yeh customer page mein next js ko  dikha to sath hi mein yeh customer page server side ho gya 
+
+- similarly humne /dashboard mein is function ka use kiya 
+const response = await fetch('https://fakestoreapi.com/products');
+    const products:Product[] = await response.json(); 
+# yeh bs ek simple fetch code with no server side code 
+# yha pe jb next js build ho rha tha to /dashboard mein use koi server side code nhi dikha to isliye yeh component static hogya . 

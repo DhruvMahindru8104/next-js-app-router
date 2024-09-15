@@ -1,0 +1,33 @@
+in old next js jo pages hote the web app k vo sare pages  folder k andr hote the 
+like this 
+
+/pages
+   ├── blog/    
+   │   └── [slug].js     'www.domain.com/blog/[id]'     
+   ├── index.js           'www.domain.com'
+   ├── about.js            'www.domain.com/about'
+   ├── contact.js           'www.domain.com/contact' 
+
+
+but in new app router agr aapko ek about page bnaana hai to uska folder bnana padna and uske andr page.jsx likhna padna like this (app/about/page.tsx) . similarly for all pages . ab app/page.tsx homepage hai .
+/app
+   ├── api/
+   │   └── hello/
+   │       └── route.js    # API route: www.domain.com/api/hello
+   ├── blog/
+   │   ├── [slug]/
+   │   │   ├── page.jsx    # 'www.domain.com/blog/[slug]' (Dynamic route, e.g., www.domain.com/blog/my-first-post)
+   │   └── layout.js       # Blog-specific layout (optional, no direct URL)
+   ├── dashboard/
+   │   ├── settings/
+   │   │   └── page.jsx    # 'www.domain.com/dashboard/settings'
+   │   └── layout.js       # Dashboard-specific layout (optional, no direct URL)
+   ├── about/
+   │   └── page.jsx        # About page: 'www.domain.com/about'
+   ├── contact/
+   │   └── page.jsx        # Contact page: 'www.domain.com/contact'
+   ├── layout.js           # Global layout for all pages (no direct URL)
+   ├── page.jsx            # Home page: 'www.domain.com'
+   └── error.js            # Custom error page: Used for handling errors (no direct URL)
+
+https://nextjs.org/_next/image?url=%2Flearn%2Fdark%2Fdashboard-route.png&w=1920&q=75 yeh image se aapko pta lg jayega aur achi trh 

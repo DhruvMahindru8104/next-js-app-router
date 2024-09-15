@@ -1,0 +1,3 @@
+1-make global.css(by defualt it is build) and import it in layout.tsx of app (@/app/layout.tsx)
+2- how to install tailwind.css in next js app router .
+3- css modules

@@ -1,0 +1,7 @@
+1-how to create pages in next js app router
+2- layout.tsx kya hai 
+3- route grouping( means agr aapne app/layout.js mein header and footer add kr liya hai jo ki ab hr page pr show hoga, pr aap nhi chahte ki kuch pages like login and register mein header and footer show ho to aap kya kroge.). ise multiple layouts bhi kehte hai 
+4- when to use root layout and multiple layout
+5- Dynamic routes (Dynamic pages) [like app/dashboard/[id ]] (by default yeh Dynamic rendering ka use krte)
+6- Dynamic routes (Dynamic pages ) ko static kaise banaye . (getstatic paths ki trh) (generatestaticparams ka use krenge hum yha pe )
+7- catching all segments in nextjs (like app/dashboard/[user]/[id]/[name]) ab aap hr ek k liye Dynamic route to nhi bnaoge isliye we will use catching all segments in nextjs . 

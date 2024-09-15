@@ -1,0 +1,35 @@
+the first thing to install next js is to install pnpm . Yeh npm or yarn ki trh hi hai 
+
+step 1- 
+npm install -g pnpm 
+
+step 2 - 
+run Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+why we run this script dekh lo 
+
+
+### **Understanding RemoteSigned and Downloaded Scripts:**
+
+- **`pnpm` installed via `npm install -g pnpm`:**
+   - When you install `pnpm` using the official command (`npm install -g pnpm`), it is downloaded from the **npm registry**, which is a trusted source.
+   - This means that `pnpm` is considered a **trusted, signed script**, so PowerShell will allow you to run `pnpm` commands even with the `RemoteSigned` policy in place.
+
+- **If a hacker creates a script (e.g., `aj run dev`):**
+   - If you download or get a script from an untrusted source (like a hacker), and it is not **digitally signed**, PowerShell with `RemoteSigned` will **block** that script from running.
+   - For example, if someone gives you a script called `aj.ps1` and you try to run:
+     ```bash
+     ./aj run dev
+     ```
+   - PowerShell would prevent this script from executing unless it's signed by a trusted publisher.
+
+### **Why is this Protection Important?**
+- **Protection against malicious scripts**: `RemoteSigned` ensures that any script from external sources (like the internet) must be signed by a trusted authority. Unsigned scripts, such as those written by hackers or untrusted parties, won’t run automatically unless you unblock or bypass the policy, which gives you a layer of security.
+
+### **Summary of What Will Happen**:
+1. **If you install `pnpm`** using the command `npm install -g pnpm` (or from a trusted source), it will run because it's considered safe and trusted.
+2. **If someone gives you a script** (like `aj run dev`), and it's **not from a trusted source**, PowerShell with the `RemoteSigned` policy will **block it from running**, unless you explicitly unblock it (which is not recommended unless you trust the script).
+
+This way, `RemoteSigned` protects you from running potentially harmful scripts from unverified or malicious sources. 
+
+- ab next kaam hai ki aap next js ki documentation pe jake dekho ki kise install kre hum next js app router ko 
